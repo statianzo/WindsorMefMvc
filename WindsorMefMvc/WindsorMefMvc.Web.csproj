@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Castle\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Spark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Spark\Spark.dll</HintPath>
@@ -93,11 +97,19 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Framework\Bootstrapper.cs" />
+    <Compile Include="Framework\BootstrapperTasks\LoggingStartup.cs" />
+    <Compile Include="Framework\BootstrapperTasks\SetControllerFactoryTask.cs" />
+    <Compile Include="Framework\BootstrapperTasks\LoadMvcPackagesTask.cs" />
+    <Compile Include="Framework\BootstrapperTasks\LoadWindsorInstallersTask.cs" />
+    <Compile Include="Framework\BootstrapperTasks\RegisterCompositionContainer.cs" />
+    <Compile Include="Framework\BootstrapperTasks\RegisterRoutesTask.cs" />
+    <Compile Include="Framework\BootstrapperTasks\RegisterViewEngineTask.cs" />
+    <Compile Include="Framework\IBootstrapperTask.cs" />
     <Compile Include="Framework\MefInstaller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -121,7 +133,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\Home\Index.spark" />
     <None Include="Views\Shared\_Blah.spark" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

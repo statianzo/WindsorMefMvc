@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindsorMefMvc.Impl", "Winds
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindsorMefMvc.Rice", "WindsorMefMvc.Rice\WindsorMefMvc.Rice.csproj", "{E11BEEC4-AC04-40F6-A81A-DB2D78AB69FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindsorMefMvc.Home", "WindsorMefMvc.Home\WindsorMefMvc.Home.csproj", "{A41CF615-F74A-4A25-A2EC-0E1D2C61E3C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{E11BEEC4-AC04-40F6-A81A-DB2D78AB69FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E11BEEC4-AC04-40F6-A81A-DB2D78AB69FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E11BEEC4-AC04-40F6-A81A-DB2D78AB69FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41CF615-F74A-4A25-A2EC-0E1D2C61E3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41CF615-F74A-4A25-A2EC-0E1D2C61E3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41CF615-F74A-4A25-A2EC-0E1D2C61E3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41CF615-F74A-4A25-A2EC-0E1D2C61E3C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
