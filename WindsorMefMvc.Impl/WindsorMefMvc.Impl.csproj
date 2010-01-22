@@ -43,6 +43,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Castle\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Spark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Spark\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark.Web.Mvc2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Spark\Spark.Web.Mvc2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

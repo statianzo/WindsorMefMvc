@@ -35,9 +35,7 @@ namespace WindsorMefMvc.Web
 			var controllerRegister = container.Resolve<IControllerRegistrationStrategy>();
 			controllerRegister.Register(typeof (MvcApplication).Assembly);
 
-		    var viewengineRegister = container.Resolve<IViewEngineRegistrationStrategy>();
-            viewengineRegister.RegisterViewEngine(new SparkViewFactory());
-            
+            SparkEngineStarter.RegisterViewEngine();
 
 			ControllerBuilder.Current.SetControllerFactory(container.Resolve<IControllerFactory>());
 		}

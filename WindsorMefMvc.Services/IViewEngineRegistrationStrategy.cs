@@ -1,9 +1,9 @@
-using System.Web.Mvc;
+using System.Reflection;
 
 namespace WindsorMefMvc.Services
 {
-    public interface IViewEngineRegistrationStrategy
-    {
-        void RegisterViewEngine(IViewEngine engine);
-    }
+	public interface IViewEngineRegistrationStrategy
+	{
+		void RegisterViewEngine(Assembly assembly);
+	}
 }
