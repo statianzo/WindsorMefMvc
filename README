@@ -1,1 +1,4 @@
-TODO: Move controller/view registration to convention based to eliminate references and redundant code
+WindsorMefMvc		- Main ASP MVC application
+WindsorMefMvc.Services	- Interfaces to common services
+WindsorMefMvc.Impl	- Implementations of common services
+WindsorMefMvc.Rice	- Example MvcPackage
