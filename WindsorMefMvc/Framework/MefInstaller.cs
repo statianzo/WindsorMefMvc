@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
 using Castle.MicroKernel;
 using Castle.Windsor;
+using WindsorMefMvc.Services;
 
 namespace WindsorMefMvc.Web.Framework
 {
@@ -20,6 +21,11 @@ namespace WindsorMefMvc.Web.Framework
 			{
 				installer.Value.Install(container, store);
 			}
+			var packages = compContainer.GetExports<IMvcPackage>();
+		    foreach (var package in packages)
+		    {
+		        package.Value.Register(container);
+		    }
 		}
 	}
 }

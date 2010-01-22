@@ -79,6 +79,7 @@
     <Compile Include="UppercaseControllerRegistrationStrategy.cs" />
     <Compile Include="ModuleInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewEngineRegistrationStrategy.cs" />
     <Compile Include="WindsorControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Windsor;
+using Spark;
 using Spark.Web.Mvc;
 using WindsorMefMvc.Services;
 using WindsorMefMvc.Web.Framework;
@@ -34,7 +35,9 @@ namespace WindsorMefMvc.Web
 			var controllerRegister = container.Resolve<IControllerRegistrationStrategy>();
 			controllerRegister.Register(typeof (MvcApplication).Assembly);
 
-			SparkEngineStarter.RegisterViewEngine(ViewEngines.Engines);
+		    var viewengineRegister = container.Resolve<IViewEngineRegistrationStrategy>();
+            viewengineRegister.RegisterViewEngine(new SparkViewFactory());
+            
 
 			ControllerBuilder.Current.SetControllerFactory(container.Resolve<IControllerFactory>());
 		}

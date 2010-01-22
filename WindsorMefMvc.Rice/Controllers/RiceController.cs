@@ -6,7 +6,7 @@ namespace WindsorMefMvc.Rice.Controllers
 	{
 		public ActionResult Index()
 		{
-			return new ContentResult();
+		    return View();
 		}
 	}
 }
