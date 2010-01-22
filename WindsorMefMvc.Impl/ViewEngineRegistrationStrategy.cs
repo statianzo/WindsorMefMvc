@@ -3,18 +3,22 @@ using System.Web.Mvc;
 using Spark.FileSystem;
 using Spark.Web.Mvc;
 using WindsorMefMvc.Services;
+using Spark.Web.Mvc.Wrappers;
 
 namespace WindsorMefMvc.Impl
 {
 	public class ViewEngineRegistrationStrategy : IViewEngineRegistrationStrategy
 	{
-		public void RegisterViewEngine(Assembly assembly)
+	    private readonly IViewFolderContainer _viewFolderContainer;
+
+	    public ViewEngineRegistrationStrategy(IViewFolderContainer viewFolderContainer)
+	    {
+	        _viewFolderContainer = viewFolderContainer;
+	    }
+
+	    public void RegisterViewEngine(Assembly assembly)
 		{
-			var engine = new SparkViewFactory
-			{
-				ViewFolder = new EmbeddedViewFolder(assembly, assembly.GetName().Name + ".Views")
-			};
-			ViewEngines.Engines.Add(engine);
+            _viewFolderContainer.AddEmbeddedResources(assembly, assembly.GetName().Name + ".Views");
 		}
 	}
 }

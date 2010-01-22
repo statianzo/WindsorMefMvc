@@ -6,6 +6,7 @@ using Spark;
 using Spark.Web.Mvc;
 using WindsorMefMvc.Services;
 using WindsorMefMvc.Web.Framework;
+using Spark.Web.Mvc.Wrappers;
 
 namespace WindsorMefMvc.Web
 {
@@ -29,13 +30,16 @@ namespace WindsorMefMvc.Web
 
 			var container = new WindsorContainer();
 			container.Kernel.AddComponentInstance<IWindsorContainer>(container);
-			container.Install(new MefInstaller());
 
+		    var sparkViewFactory = new SparkViewFactory();
+            container.Kernel.AddComponentInstance<IViewFolderContainer>(sparkViewFactory);
+
+			container.Install(new MefInstaller());
 
 			var controllerRegister = container.Resolve<IControllerRegistrationStrategy>();
 			controllerRegister.Register(typeof (MvcApplication).Assembly);
 
-            SparkEngineStarter.RegisterViewEngine();
+            ViewEngines.Engines.Add(sparkViewFactory);
 
 			ControllerBuilder.Current.SetControllerFactory(container.Resolve<IControllerFactory>());
 		}
