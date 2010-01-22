@@ -1,10 +1,9 @@
-﻿using System.Threading;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Spark.Web.Mvc;
+using WindsorMefMvc.Services;
 using WindsorMefMvc.Web.Framework;
 
 namespace WindsorMefMvc.Web
@@ -28,12 +27,12 @@ namespace WindsorMefMvc.Web
 			RegisterRoutes(RouteTable.Routes);
 
 			var container = new WindsorContainer();
+			container.Kernel.AddComponentInstance<IWindsorContainer>(container);
 			container.Install(new MefInstaller());
 
-			container.Register(
-				AllTypes.Of<IController>()
-				.FromAssembly(typeof (MvcApplication).Assembly)
-				.Configure(x => x.Named(x.ServiceType.Name.ToUpperInvariant()).LifeStyle.Transient));
+
+			var controllerRegister = container.Resolve<IControllerRegistrationStrategy>();
+			controllerRegister.Register(typeof (MvcApplication).Assembly);
 
 			SparkEngineStarter.RegisterViewEngine(ViewEngines.Engines);
 
