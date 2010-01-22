@@ -19,12 +19,13 @@ namespace WindsorMefMvc.Impl
 		{
 			try
 			{
-				return _kernel.Resolve<IController>(controllerName.ToLowerInvariant() + "-controller");
+				return _kernel.Resolve<IController>(controllerName.ToUpperInvariant() + "CONTROLLER");
 			}
 			catch (ComponentNotFoundException ex)
 			{
 				requestContext.HttpContext.AddError(new HttpException((int) HttpStatusCode.NotFound, ex.Message, ex));
-				return _kernel.Resolve<IController>("error-controller");
+				requestContext.HttpContext.ApplicationInstance.CompleteRequest();
+				return null;
 			}
 		}
 

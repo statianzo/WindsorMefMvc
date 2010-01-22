@@ -5,7 +5,7 @@ using Castle.Windsor;
 
 namespace WindsorMefMvc.Impl
 {
-	[Export("ComponentInstaller")]
+	[Export(typeof(IWindsorInstaller))]
 	public class ModuleInstaller : IWindsorInstaller
 	{
 		public void Install(IWindsorContainer container, IConfigurationStore store)

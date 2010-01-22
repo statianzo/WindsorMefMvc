@@ -1,21 +1,24 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition.Hosting;
 using Castle.MicroKernel;
 using Castle.Windsor;
-using System.ComponentModel.Composition.Hosting;
+
 namespace WindsorMefMvc.Web.Framework
 {
 	public class MefInstaller : IWindsorInstaller
 	{
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
-			var directory = Environment.CurrentDirectory;
+			string directory = "bin";
 
-			var compContainer = new CompositionContainer(new DirectoryCatalog(directory));
-			var installers = compContainer.GetExportedValues<IWindsorInstaller>("ComponentInstaller");
+			var compContainer = new CompositionContainer(new DirectoryCatalog(directory, "WindsorMefMvc.*.dll"));
+			IEnumerable<Lazy<IWindsorInstaller>> installers = compContainer.GetExports<IWindsorInstaller>();
+
 
 			foreach (var installer in installers)
 			{
-				installer.Install(container, store);
+				installer.Value.Install(container, store);
 			}
 		}
 	}
