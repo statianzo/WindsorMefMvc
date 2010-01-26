@@ -1,22 +1,23 @@
+using System;
 using System.ComponentModel.Composition;
-using System.Web.Routing;
-using WindsorMefMvc.Services;
+using Castle.MicroKernel;
 using Castle.Windsor;
+using WindsorMefMvc.Services;
 
 namespace WindsorMefMvc.Rice
 {
 	[Export(typeof (IMvcPackage))]
 	public class RiceMvcPackage : IMvcPackage
 	{
-		private readonly IWindsorContainer _container;
-
-		[ImportingConstructor]
-		public RiceMvcPackage(IWindsorContainer container)
+		public void RegisterRoutes(IRouteRegistrationStrategy routeRegistrationStrategy)
 		{
-			_container = container;
+			routeRegistrationStrategy.MapRoute(
+				"RiceController",
+				"Rice/{action}/{id}",
+				new {controller="rice", action = "Index", id = ""});
 		}
 
-		public void RegisterRoutes(RouteCollection routes)
+		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
 		}
 	}

@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContainerNameRouteRegistrationStrategy.cs" />
     <Compile Include="UppercaseControllerRegistrationStrategy.cs" />
     <Compile Include="ModuleInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

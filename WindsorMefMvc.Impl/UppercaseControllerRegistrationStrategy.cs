@@ -1,13 +1,12 @@
-using System;
 using System.Reflection;
 using System.Web.Mvc;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using WindsorMefMvc.Services;
-using Castle.MicroKernel.Registration;
 
 namespace WindsorMefMvc.Impl
 {
-	public class UppercaseControllerRegistrationStrategy:IControllerRegistrationStrategy
+	public class UppercaseControllerRegistrationStrategy : IControllerRegistrationStrategy
 	{
 		private readonly IWindsorContainer _container;
 

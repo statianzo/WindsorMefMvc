@@ -20,6 +20,8 @@ namespace WindsorMefMvc.Impl
 				Component.For<IViewEngineRegistrationStrategy>()
 					.ImplementedBy<ViewEngineRegistrationStrategy>().
 					LifeStyle.Transient);
+			container.AddComponentLifeStyle<IRouteRegistrationStrategy, ContainerNameRouteRegistrationStrategy>(
+				LifestyleType.Transient);
 		}
 	}
 }

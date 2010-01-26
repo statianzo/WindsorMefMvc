@@ -110,7 +110,6 @@
     <Compile Include="Framework\BootstrapperTasks\RegisterRoutesTask.cs" />
     <Compile Include="Framework\BootstrapperTasks\RegisterViewEngineTask.cs" />
     <Compile Include="Framework\IBootstrapperTask.cs" />
-    <Compile Include="Framework\MefInstaller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

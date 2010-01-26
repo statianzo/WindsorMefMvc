@@ -5,8 +5,10 @@ namespace WindsorMefMvc.Web.Framework.BootstrapperTasks
 {
 	public class RegisterCompositionContainer : IBootstrapperTask
 	{
-		private const string Directory = "bin";
+		private const string Directory = "./bin";
+		private const string Filter = "WindsorMefMvc.*.dll";
 		private readonly IWindsorContainer _windsorContainer;
+
 
 		public RegisterCompositionContainer(IWindsorContainer windsorContainer)
 		{
@@ -20,7 +22,7 @@ namespace WindsorMefMvc.Web.Framework.BootstrapperTasks
 
 		public void Execute()
 		{
-			var catalog = new DirectoryCatalog(Directory, "WindsorMefMvc.*.dll");
+			var catalog = new DirectoryCatalog(Directory, Filter);
 			var compContainer = new CompositionContainer(catalog);
 			_windsorContainer.Kernel.AddComponentInstance<CompositionContainer>(compContainer);
 		}

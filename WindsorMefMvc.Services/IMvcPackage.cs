@@ -1,9 +1,8 @@
-using System.Web.Routing;
-
+using Castle.Windsor;
 namespace WindsorMefMvc.Services
 {
-	public interface IMvcPackage
+	public interface IMvcPackage:IWindsorInstaller
 	{
-		void RegisterRoutes(RouteCollection routes);
+		void RegisterRoutes(IRouteRegistrationStrategy routeRegistrationStrategy);
 	}
 }

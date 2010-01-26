@@ -3,23 +3,28 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.MicroKernel;
+using Castle.Windsor;
 
 namespace WindsorMefMvc.Impl
 {
 	public class WindsorControllerFactory : IControllerFactory
 	{
-		private readonly IKernel _kernel;
+		private readonly IWindsorContainer _container;
 
-		public WindsorControllerFactory(IKernel kernel)
+		public WindsorControllerFactory(IWindsorContainer container)
 		{
-			_kernel = kernel;
+			_container = container;
 		}
 
 		public IController CreateController(RequestContext requestContext, string controllerName)
 		{
 			try
 			{
-				return _kernel.Resolve<IController>(controllerName.ToUpperInvariant() + "CONTROLLER");
+				IWindsorContainer container = _container;
+				RouteValueDictionary routeValues = requestContext.RouteData.Values;
+				if (routeValues.ContainsKey("container"))
+					container = _container.GetChildContainer(routeValues["container"].ToString());
+				return container.Resolve<IController>(controllerName.ToUpperInvariant() + "CONTROLLER");
 			}
 			catch (ComponentNotFoundException ex)
 			{
@@ -31,7 +36,7 @@ namespace WindsorMefMvc.Impl
 
 		public void ReleaseController(IController controller)
 		{
-			_kernel.ReleaseComponent(controller);
+			_container.Kernel.ReleaseComponent(controller);
 		}
 	}
 }
